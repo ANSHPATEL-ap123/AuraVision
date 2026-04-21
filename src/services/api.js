@@ -1,8 +1,19 @@
 const API_URL = 'https://auravision-api.onrender.com';
 
+// This function controls the "Online/Offline" status dot
+export const checkHealth = async () => {
+  try {
+    const response = await fetch(`${API_URL}/api/health`);
+    return response.ok;
+  } catch (error) {
+    console.error("Health check failed:", error);
+    return false;
+  }
+};
+
+// This function handles the actual AI Image Enhancement
 export const upscaleImage = async (imageBuffer, description) => {
   try {
-    // We are now using the live Render URL instead of localhost
     const response = await fetch(`${API_URL}/api/upscale`, {
       method: 'POST',
       headers: {
