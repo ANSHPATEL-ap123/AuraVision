@@ -1,6 +1,9 @@
+const API_URL = 'https://auravision-api.onrender.com';
+
 export const upscaleImage = async (imageBuffer, description) => {
   try {
-    const response = await fetch('http://localhost:3005/api/upscale', {
+    // We are now using the live Render URL instead of localhost
+    const response = await fetch(`${API_URL}/api/upscale`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
